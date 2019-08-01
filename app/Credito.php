@@ -4,24 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Credito extends Model
 {
 
     public function tipoCredito(){
 
-        return $this->hasOne('App/TipoCredito','tipo_credito','id');
+        return $this->hasOne('App\TipoCredito', 'id', 'tipocredito_id');
         
     }
 
-    public function cliente(){
+    public function usuario(){
 
-        return $this->hasOne('App/Cliente', 'usuario_credito', 'documento');
+        return $this->hasOne('App\User', 'user_id', 'user_id');
         
     }
 
     public function movimientos(){
 
-        return $this->hasMany('App/Movimiento', 'credito_id', 'id');
+        return $this->hasMany('App\Movimiento');
         
     }
 

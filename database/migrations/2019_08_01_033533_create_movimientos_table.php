@@ -19,7 +19,7 @@ class CreateMovimientosTable extends Migration
             $table->double('interes_calculado');
 
             $table->unsignedBigInteger('credito_id');
-            $table->foreign('credito_id')->references('id')->on('movimientos');
+            $table->foreign('credito_id')->references('id')->on('creditos');
 
 
             $table->timestamps();

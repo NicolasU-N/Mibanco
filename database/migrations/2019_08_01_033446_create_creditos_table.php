@@ -15,15 +15,14 @@ class CreateCreditosTable extends Migration
     {
         Schema::create('creditos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('interes');
             $table->double('valor_credito');
             $table->double('valor_saldo');
             
-            $table->string('usuario_credito');
-            $table->foreign('usuario_credito')->references('documento')->on('users');
+            $table->string('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users');
 
-            $table->unsignedBigInteger('tipo_credito');
-            $table->foreign('tipo_credito')->references('id')->on('tipo_creditos');
+            $table->unsignedBigInteger('tipocredito_id');
+            $table->foreign('tipocredito_id')->references('id')->on('tipo_creditos');
         
             $table->timestamps();
         });
