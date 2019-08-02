@@ -14,7 +14,10 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,8 +26,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-5">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand ml-5" href="{{ url('/') }}">
+                    MI BANCO
+                </a>
+                <a class="navbar-brand mr-5" href="{{ url('/home') }}">
+                    Panel de administrador
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -76,11 +82,13 @@
             @yield('content')
         </div>
             
+        <!-- Footer -->
+        <footer style=" flex-shrink: none;" class="p-5 bg-dark text-white-50 mt-5">
+            <div class="container text-center">
+              <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse soluta nisi doloribus voluptatibus totam sunt magni. Officiis, rem deleniti. Laudantium illum voluptate laboriosam nulla facere aperiam ullam quas perferendis ea.</small>
+            </div>
+        </footer>
         
-
-        <div class="container-fluid bg-dark text-white p-5 text-center mt-5">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse soluta nisi doloribus voluptatibus totam sunt magni. Officiis, rem deleniti. Laudantium illum voluptate laboriosam nulla facere aperiam ullam quas perferendis ea.</p>
-        </div>
     </div>
 </body>
 </html>

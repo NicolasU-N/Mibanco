@@ -22,6 +22,7 @@
                             <label for="inputEmail3">Email</label>
                             <input name="txtEmail" type="text" class="form-control" id="inputEmail3" placeholder="Email" required>
                         </div>
+
                         <div class="form-group col-md-6 m-auto">
                             <label for="inputState">Documento</label>
                             <select id="inputState" class="form-control" name="txtTipoDoc">
@@ -30,18 +31,24 @@
                                 @endforeach           
                             </select>
                         </div>
+                        
                          <div class="form-group col-md-6">
                             <label for="inputEmail4">Número de documento</label>
-                            <input name="txtDocumento" type="text" class="form-control" id="inputEmail4" placeholder="Número de documento" required>
+                            <input name="txtDocumento" type="text" pattern="{0-9}" class="form-control" id="inputEmail4" placeholder="Número de documento" required>
                         </div>
                          <div class="form-group col-md-6">
                             <label for="inputEmail5">Celular</label>
                             <input name="txtCelular" type="text" pattern="{0-9}"  class="form-control" id="inputEmail5" placeholder="Número de celular" required>
                         </div>
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text" id="inputGroupFileAddon01">Cargar</span>
-                                </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail6">Fecha de nacimiento</label>
+                            <input name="dateFechaNacimiento" type="date" class="form-control" id="inputEmail6" placeholder="Número de celular" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail7">Direccion</label>
+                            <input name="txtDireccion" type="text" class="form-control" id="inputEmail" placeholder="Dirección" required>
+                        </div>
+                        <div class="form-group col-md-12 align-items-center">
                                 <div class="custom-file">
                                   <input name="fileAvatar" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                   <label class="custom-file-label" for="inputGroupFile01">Cargar foto del cliente</label>
@@ -49,11 +56,11 @@
                         </div>
                               <hr />
                               <div class="row">
-                                    <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar al acudiente?');" class="btn btn-primary">Registrar</button></div>
+                                    <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar este Cliente?');" class="btn btn-primary">Registrar</button></div>
                                     <div class="col-6"><button type="reset" class="btn btn-danger">Limpiar</button></div>
                                 </div>
-                  </form>
-            </div>
+                        </form>
+                    </div>
         </div>
     </div>
 </div>

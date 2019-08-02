@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Credito;
+use App\Cliente;
+use App\TipoCredito;
 
 class CreditoController extends Controller
 {
@@ -13,7 +16,7 @@ class CreditoController extends Controller
      */
     public function index()
     {
-        //
+       return redirect('/Cliente') ;
     }
 
     /**
@@ -23,7 +26,10 @@ class CreditoController extends Controller
      */
     public function create()
     {
-        //
+       $tipoCredito = TipoCredito::all();
+       $cliente = Cliente::all();
+
+        return view('credito.crear', compact('cliente', 'tipoCredito'));
     }
 
     /**
@@ -34,7 +40,21 @@ class CreditoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credito = new Credito;
+
+        $credito->valor_credito=$request->txtCredito;
+
+        $credito->user_id=$request->txtCliente;
+
+        $ValorGenerado=$credito->valor_credito=$request->txtCredito;
+       
+
+        $credito->valor_saldo=$request->txtTipoCredito;
+        
+        
+        $credito->save();
+
+        return redirect('/Credito');
     }
 
     /**

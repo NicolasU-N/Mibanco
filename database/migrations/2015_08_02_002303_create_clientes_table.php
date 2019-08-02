@@ -17,6 +17,7 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombres');
             $table->string('apellidos');
+            $table->date('fechanacimiento');
             $table->string('email');
 
             $table->unsignedBigInteger('tipodocumento_id');
@@ -24,7 +25,8 @@ class CreateClientesTable extends Migration
 
             $table->string('user_id')->unique();
             $table->string('celular');
-            $table->string('avatar');
+            $table->string('direccion');
+            $table->string('avatar')->nullable();
                   
             $table->timestamps();
         });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TipoCredito;
+
 
 class TipoCreditoController extends Controller
 {
@@ -13,7 +15,9 @@ class TipoCreditoController extends Controller
      */
     public function index()
     {
-        //
+        $tipoCredito = TipoCredito::all();
+        return view('tipocredito.index', compact('tipoCredito'));       
+
     }
 
     /**
@@ -23,7 +27,7 @@ class TipoCreditoController extends Controller
      */
     public function create()
     {
-        //
+           return view('tipocredito.crear');
     }
 
     /**
@@ -34,7 +38,17 @@ class TipoCreditoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $tipoCredito = new TipoCredito;
+
+        $tipoCredito->nombre=$request->txtNombre;
+        $tipoCredito->descripcion=$request->txtDescripcion;
+        $tipoCredito->interes_fijo=$request->txtinteresfijo;
+        $tipoCredito->save();
+
+        return redirect('/TipoCredito');
+
+
     }
 
     /**

@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::Resource('/Cliente', 'ClienteController');
+
+Route::Resource('/TipoCredito', 'TipoCreditoController');
+
+Route::Resource('/Credito', 'CreditoController'); //Configurar controlador

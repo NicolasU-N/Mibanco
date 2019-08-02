@@ -19,6 +19,9 @@ class Insertar extends Seeder
             ]);
             
         }
+
+    
+        
             
     }
 }
