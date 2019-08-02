@@ -16,7 +16,7 @@ class Credito extends Model
 
     public function usuario(){
 
-        return $this->hasOne('App\User', 'user_id', 'user_id');
+        return $this->hasOne('App\Cliente', 'user_id', 'user_id');
         
     }
 

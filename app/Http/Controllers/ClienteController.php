@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TipoDocumento;
+use App\Cliente;
 
-class UserController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $cliente = Cliente::all();
+    return view('cliente.index', compact('cliente'));
     }
 
     /**
@@ -23,7 +26,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $tipoDocumento = TipoDocumento::all();
+
+        return view('cliente.crear', compact('tipoDocumento'));
     }
 
     /**
@@ -34,7 +39,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente;
+
+        if ($request->hasFile('fileAvatar')) {
+            $file = $request->file('fileAvatar');
+            $nombreArchivo = time().'-'.$file->getClientOriginalName();
+            $file->move(public_path().'/imagenes/',$nombreArchivo);
+            $cliente->avatar = $nombreArchivo;
+        }
+
+        $cliente->nombres=$request->txtNombre;
+        $cliente->apellidos=$request->txtApellido;
+        $cliente->email=$request->txtEmail;
+        $cliente->tipodocumento_id=$request->txtTipoDoc;
+        $cliente->email=$request->txtEmail;
+        $cliente->user_id=$request->txtDocumento;
+        $cliente->celular=$request->txtCelular;
+
+        $cliente->save();
+
+        return redirect('/Cliente');
+
     }
 
     /**

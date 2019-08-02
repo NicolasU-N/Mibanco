@@ -11,11 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function creditos(){
-
-        return $this->belongsTo('App\Credito', 'user_id', 'user_id');
-        
-    }
+    
 
     /**
      * The attributes that are mass assignable.
@@ -23,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','documento','celular'
+        'name', 'email', 'password'
     ];
 
     /**

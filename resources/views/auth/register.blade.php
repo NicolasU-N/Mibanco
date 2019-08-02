@@ -60,23 +60,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="celular" class="col-md-4 col-form-label text-md-right">Cell</label>
-
-                            <div class="col-md-6">
-                                <input id="celular" type="text" class="form-control" name="celular" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="documento" class="col-md-4 col-form-label text-md-right">Document</label>
-
-                            <div class="col-md-6">
-                                <input id="documento" type="text" class="form-control" name="documento" required autocomplete="new-password">
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

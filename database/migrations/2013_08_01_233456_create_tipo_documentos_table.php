@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCreditosTable extends Migration
+class CreateTipoDocumentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateCreditosTable extends Migration
      */
     public function up()
     {
-        Schema::create('creditos', function (Blueprint $table) {
+        Schema::create('tipo_documentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('valor_credito');
-            $table->double('valor_saldo');       
-           
-            $table->string('user_id');
-            $table->foreign('user_id')->references('user_id')->on('clientes');
-           
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateCreditosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('creditos');
+        Schema::dropIfExists('tipo_documentos');
     }
 }
