@@ -75,8 +75,9 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($id);
 
         $tipoDocumento = $cliente->tipoDocumento;
+        $credito = $cliente->creditos;
 
-        return view('cliente.show', compact('cliente','tipoDocumento'));
+        return view('cliente.show', compact('cliente','tipoDocumento', 'credito'));
     }
 
     /**

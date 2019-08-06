@@ -27,7 +27,7 @@ class TipoCreditoController extends Controller
      */
     public function create()
     {
-           return view('tipocredito.crear');
+        return view('tipocredito.crear');
     }
 
     /**
@@ -43,7 +43,7 @@ class TipoCreditoController extends Controller
 
         $tipoCredito->nombre=$request->txtNombre;
         $tipoCredito->descripcion=$request->txtDescripcion;
-        $tipoCredito->interes_fijo=$request->txtinteresfijo;
+        $tipoCredito->interes_fijo=$request->txtInteresFijo/100;
         $tipoCredito->save();
 
         return redirect('/TipoCredito');
@@ -59,7 +59,11 @@ class TipoCreditoController extends Controller
      */
     public function show($id)
     {
-        //
+        $tipoCredito =  TipoCredito::findOrFail($id);
+
+        return view('tipocredito.show', compact('tipoCredito'));
+
+
     }
 
     /**
@@ -70,7 +74,9 @@ class TipoCreditoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoCredito = TipoCredito::findOrFail($id);
+
+        return view('tipocredito.edit', compact('tipoCredito'));
     }
 
     /**
@@ -82,7 +88,14 @@ class TipoCreditoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tipoCredito =  TipoCredito::findOrFail($id);
+
+        $tipoCredito->nombre=$request->txtNombre;
+        $tipoCredito->descripcion=$request->txtDescripcion;
+        $tipoCredito->interes_fijo=$request->txtInteresFijo/100;
+        $tipoCredito->save();
+
+        return redirect('/TipoCredito');
     }
 
     /**
@@ -93,6 +106,9 @@ class TipoCreditoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tipoCredito =  TipoCredito::findOrFail($id);
+
+        $tipoCredito->delete();
+        return redirect('TipoCredito');
     }
 }

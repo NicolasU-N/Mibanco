@@ -16,6 +16,8 @@ class CreateMovimientosTable extends Migration
         Schema::create('movimientos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('valor_pago');
+            $table->double('valor_saldo_anterior');
+            $table->double('valor_saldo_actual');
             $table->double('interes_calculado');
 
             $table->unsignedBigInteger('credito_id');

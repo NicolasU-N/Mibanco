@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container-fluid p-5 bg-danger text-white my-5 text-center">
+        <h2>Clientes</h2>
+    </div>
+    
 @if (count($cliente))
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -19,7 +22,7 @@
                         <hr />
                         <h5 style="font-weight: bold">N° de documento: <span class="badge badge-dark"> {{$clientes->user_id}} </span></h5> 
                         <hr />
-                        <form action="/Cliente/{{$clientes->id}}" method="get">
+                        <form action="/Cliente/{{$clientes->id}}" method="GET">
                             <button type="submit" class="btn btn-primary">Más información</button>
                         </form>
                     </div>
@@ -33,7 +36,7 @@
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
         <div class="card text-center p-5" style="box-shadow: 8px 8px 8px rgba(0,0,0,0.2)">
-            <i class="fas fa-address-book my-3" style="font-size: 10em; color:rgba(0,0,0,1)"></i>
+            <i class="fas fa-address-book my-5" style="font-size: 10em; color:rgba(0,0,0,1)"></i>
             <p style="font-weight: bold"> No se encontró ningún cliente </p>
         </div>
     </div>

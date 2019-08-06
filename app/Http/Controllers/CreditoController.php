@@ -42,16 +42,18 @@ class CreditoController extends Controller
     {
         $credito = new Credito;
 
-        $credito->valor_credito=$request->txtCredito;
-
-        $credito->user_id=$request->txtCliente;
-
-        $ValorGenerado=$credito->valor_credito=$request->txtCredito;
        
+        $credito->valor_credito=$request->txtCredito;
+        $valorCredito=$credito->valor_credito=$request->txtCredito;
 
-        $credito->valor_saldo=$request->txtTipoCredito;
+        $credito->valor_saldo=$valorCredito;
         
+        $credito->numero_cuotas=$request->txtNumCuotas;
+
         
+        $credito->user_id=$request->txtCliente;
+        $credito->tipocredito_id=$request->txtTipoCredito;
+
         $credito->save();
 
         return redirect('/Credito');
@@ -65,7 +67,10 @@ class CreditoController extends Controller
      */
     public function show($id)
     {
-        //
+        $credito =  Credito::findOrFail($id);
+        $cliente = $credito->usuario;
+        $tipoCredito = $credito->tipoCredito;
+        return view('credito.show', compact('credito','tipoCredito','cliente'));
     }
 
     /**
@@ -74,10 +79,6 @@ class CreditoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -88,7 +89,7 @@ class CreditoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -99,6 +100,7 @@ class CreditoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $credito = Credito::findOrFail($id);
+        $credito->delete();
     }
 }

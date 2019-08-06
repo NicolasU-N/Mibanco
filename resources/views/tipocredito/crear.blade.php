@@ -12,30 +12,25 @@
                             <div class="form-group p-5">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputNombre">Nombre</label>
+                                            <label for="inputNombre">Nombre del tipo de crédito</label>
                                             <input name="txtNombre" type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="txtDescription">Descripción</label>
-                                                <textarea name="txtDescripcion"  id="txtDescripcion" class="md-textarea form-control" rows="3"></textarea>                                    
-                                            </div>
-                                    </div>
-                                    <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="txtinteresfijo">Interés Fijo</label>
-                                                <input name="txtinteresfijo" type="text" pattern="{0-9}"  class="form-control" id="txtinteresfijo" placeholder="Porcentaje del interes" required>
-                                            </div>
-                                    </div>
-                                    
-                                          
-                                          <div class="form-row">
-                                                <div class="col-2"><button type="submit" onclick="return confirm('¿Desea guardar este nuevo tipo de crédito?');" class="btn btn-primary">Registrar</button></div>
-                                                <div class="col-2"><button type="reset" class="btn btn-danger">Limpiar</button></div>
-                                            </div>
-            
+                                        <div class="form-group col-md-6">
+                                            <label for="txtinteresfijo">Interés Fijo</label>
+                                            <input name="txtInteresFijo" type="number" min="0" class="form-control" id="txtinteresfijo" placeholder="Porcentaje del interes" required>
                                         </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label for="txtDescription">Descripción</label>
+                                                <textarea name="txtDescripcion"  id="txtDescription" class="md-textarea form-control" rows="3"></textarea>                                    
+                                            </div>
+                                            
+                                    
+                                        <div class="col-2"><button type="submit" onclick="return confirm('¿Desea guardar este nuevo tipo de crédito?');" class="btn btn-primary">Registrar</button></div>
+                                        <div class="col-2"><button type="reset" class="btn btn-danger">Limpiar</button></div>
+                                    
+                            </div>
+                                        
                     
                   </form>
             </div>

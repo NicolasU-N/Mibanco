@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Credito;
+use App\Cliente;
 
 class MovimientoController extends Controller
 {
@@ -21,9 +23,12 @@ class MovimientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function crear($id)
     {
-        //
+        $credito = Credito::findOrFail($id);
+        return view('movimiento.crear', compact('credito'));
+
     }
 
     /**
@@ -34,7 +39,12 @@ class MovimientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $movimiento = new Movimiento;
+
+        $movimiento->valor_pago=$request->txtValorPago;
+        
+
+        $movimiento->save();
     }
 
     /**

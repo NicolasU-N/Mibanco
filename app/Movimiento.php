@@ -8,7 +8,7 @@ class Movimiento extends Model
 {
     public function credito(){
 
-        return $this->belongsTo('App\Credito');
+        return $this->hasOne('App\Credito');
         
     }
 }

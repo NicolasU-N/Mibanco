@@ -8,7 +8,7 @@ class Cliente extends Model
 {
     public function creditos(){
 
-        return $this->belongsTo('App\Credito', 'user_id', 'user_id');
+        return $this->hasMany('App\Credito', 'user_id', 'user_id');
         
     }
 

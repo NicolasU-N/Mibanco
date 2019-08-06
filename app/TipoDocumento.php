@@ -8,7 +8,7 @@ class TipoDocumento extends Model
 {
     public function clientes(){
 
-        return $this->belongsTo('App\Cliente', 'tipodocumento_id', 'id');
+        return $this->hasMany('App\Cliente', 'tipodocumento_id', 'id');
         
     }
 }

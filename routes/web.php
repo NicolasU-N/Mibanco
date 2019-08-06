@@ -23,4 +23,8 @@ Route::Resource('/Cliente', 'ClienteController');
 
 Route::Resource('/TipoCredito', 'TipoCreditoController');
 
-Route::Resource('/Credito', 'CreditoController'); //Configurar controlador
+Route::Resource('/Credito', 'CreditoController'); 
+
+Route::Resource('/Movimiento', 'MovimientoController'); 
+
+Route::get('/Movimientos/{id}','MovimientoController@crear');

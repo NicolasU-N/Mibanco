@@ -16,7 +16,9 @@ class CreateCreditosTable extends Migration
         Schema::create('creditos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('valor_credito');
-            $table->double('valor_saldo');       
+            $table->double('valor_saldo');  
+            $table->integer('numero_cuotas');
+            $table->double('valor_cuotas')->nullable();     
            
             $table->string('user_id');
             $table->foreign('user_id')->references('user_id')->on('clientes');

@@ -2,6 +2,11 @@
 
 @section('content')
 
+<div class="container-fluid p-5 bg-danger text-white my-5 text-center">
+        <h2>Cliente</h2>
+    </div>
+    
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8 m-auto">
@@ -29,7 +34,17 @@
                         <td>{{$cliente->direccion}}</td>
                         <td>{{$cliente->fechanacimiento}}</td>
                         <td>{{$cliente->celular}}</td>
-                        <td></td>
+                        @if (count($credito))
+                        <td>
+                            <ul>
+                                    @foreach ($credito as $creditos)
+                                <li> {{$creditos->id}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        @else
+                            Aún sin créditos
+                        @endif
                         <td>
                             <form action="/Cliente/{{$cliente->id}}/edit" method="GET">
                                 <button type="submit" class="btn btn-info">Editar</button>
@@ -47,7 +62,40 @@
         </table> 
         </div>
     </div>
-</div>      
+
+    
+
+
+    
+</div>  
+
+<div class="container-fluid p-5 bg-danger text-white my-5 text-center">
+        <h2>Créditos</h2>
+    </div>
+    <div class="container-fluid">
+            <div class="row">
+                    @foreach ($credito as $creditos)
+                    <div class="col-md-4 m-auto">
+                        <div class="card my-5  text-center" style="box-shadow:  8px 8px 15px rgba(0,0,0,0.2)">
+                        <h3 class="bg-danger p-5 text-white">ID CRÉDITO:  {{$creditos->id}}</h3>
+                        <h3 class="p-3">VALOR CRÉDITO: {{$creditos->valor_credito}}</h3>
+                        <hr />
+                        <h3 class="p-3">CUOTAS:  {{$creditos->numero_cuotas}}</h3>
+                        <hr />
+                        <div class="row py-3">
+                            <div class="col-md-4 m-auto">
+                            <form action="/Credito/{{$creditos->id}}" method="GET">
+                                <button class="btn btn-primary" type="submit">Más información</button>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                        
+                    @endforeach
+                </div>
+    </div>
+
 
 
     
