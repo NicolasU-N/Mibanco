@@ -17,7 +17,7 @@ class CreateTipoCreditosTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->double('interes_fijo');
+            $table->float('interes_fijo');
             $table->timestamps();
         });
     }

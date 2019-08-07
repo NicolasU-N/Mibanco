@@ -50,12 +50,18 @@
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 5px;
+                margin: 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                border-bottom: 2px solid transparent ;
+            }
+
+            .links > a:hover {
+                border-bottom: 2px solid #636b6f;
             }
 
             .m-b-md {
@@ -81,19 +87,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    SISTEMA BANCARIO
                 </div>
             </div>
         </div>
+
+
+
     </body>
 </html>

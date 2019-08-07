@@ -27,4 +27,5 @@ Route::Resource('/Credito', 'CreditoController');
 
 Route::Resource('/Movimiento', 'MovimientoController'); 
 
-Route::get('/Movimientos/{id}','MovimientoController@crear');
+Route::get('/GenerarMovimiento/{id}', 'MovimientoController@crear');
+

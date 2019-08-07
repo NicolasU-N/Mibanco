@@ -18,7 +18,9 @@ class CreateCreditosTable extends Migration
             $table->double('valor_credito');
             $table->double('valor_saldo');  
             $table->integer('numero_cuotas');
-            $table->double('valor_cuotas')->nullable();     
+            $table->integer('numero_cuotas_faltantes');
+            $table->double('valor_cuotas');     
+             
            
             $table->string('user_id');
             $table->foreign('user_id')->references('user_id')->on('clientes');
@@ -26,6 +28,7 @@ class CreateCreditosTable extends Migration
             $table->unsignedBigInteger('tipocredito_id');
             $table->foreign('tipocredito_id')->references('id')->on('tipo_creditos');
            
+            $table->string('estado_credito')->default('SIN PAGAR');
            
             $table->timestamps();
         });

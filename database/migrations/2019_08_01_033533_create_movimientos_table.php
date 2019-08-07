@@ -19,6 +19,7 @@ class CreateMovimientosTable extends Migration
             $table->double('valor_saldo_anterior');
             $table->double('valor_saldo_actual');
             $table->double('interes_calculado');
+            $table->double('valor_abono_capital');   
 
             $table->unsignedBigInteger('credito_id');
             $table->foreign('credito_id')->references('id')->on('creditos');

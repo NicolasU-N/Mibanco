@@ -4,29 +4,46 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-7 m-auto">
+        <div class="col-md-6 m-auto">
             <div class="card my-5" style="box-shadow: 8px 8px 15px rgba(0,0,0,0.2)">
-                <h2 class="bg-danger text-center text-white p-5">Añadir un Movimiento</h2>
-                <form   action="/Movimiento" method="POST" >
-                    @csrf           
-                            <div class="form-group p-5">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="ValorPago">Valor a Pagar</label>
-                                            <input name="txtValorPago" type="text" pattern="{0-9}"  class="form-control" id="ValorPago" placeholder="Valor Pago" required>                                                                                        
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="ValorSaldoAnterior">Valor  saldo anterior</label>
-                                            <input type="number" pattern="{0-9}"  min="1" class="form-control" id="ValorSaldoAnterior" value="{{$credito->valor_credito}}" disabled>                                                                                        
-                                        </div>
-                                        </div> 
-                                        <div class="row text-center p-5">
-                                                <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar este nuevo movimiento?');" class="btn btn-success">Registrar</button></div>
-                                                <div class="col-6"><button type="reset" class="btn btn-danger">Limpiar</button></div>
-                                            </div>
-                            </div>                   
-                  </form>
-            </div>
+                <h2 class="bg-danger text-center text-white p-5"> Generar movimiento</h2>
+            <form action="/Movimiento" method="POST" >
+                    @csrf
+                    <div class="form-row p-5">
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas4">ID crédito</label>
+                            <input name="txtIdCredito" type="number" min="0" class="form-control disabled-pointer" id="inputCuotas4" value="{{$credito->id}}" required >
+                        </div>
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas2">Saldo anterior</label>
+                            <input type="number" min="0" class="form-control disabled-pointer" id="inputCuotas2" value="{{round($credito->valor_saldo,0)}}" required disabled >
+                        </div>
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas8">Valor cuota</label>
+                            <input  type="number" min="0" class="form-control disabled-pointer" id="inputCuotas8" value="{{round($credito->valor_cuotas,0)}}" required disabled >
+                        </div>
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas3">Valor interés calculado</label>
+                        <input  type="number" min="0" class="form-control disabled-pointer" id="inputCuotas3" value="{{round($credito->valor_saldo*$valorInteres, 0)}}" required disabled >
+                        </div>
+
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas5">Abono al capital</label>
+                        <input  type="number" min="0" class="form-control disabled-pointer" id="inputCuotas5" value="{{round($credito->valor_cuotas-($credito->valor_saldo*$valorInteres), 0)}}" required disabled >
+                        </div>
+                        <div class="form-group col-md-6 my-2">
+                            <label for="inputCuotas6">Nuevo saldo</label>
+                        <input  type="number" min="0" class="form-control disabled-pointer" id="inputCuotas6" value="{{round($credito->valor_credito-($credito->valor_cuotas-($credito->valor_saldo*$valorInteres)), 0)}}" required disabled >
+                        </div>
+                        
+                    </div>
+                    <hr />
+                    <div class="row mb-5 text-center">
+                            <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar el movimiento bancario?');" class="btn btn-primary">Registrar</button></div>
+                            <div class="col-6"><button type="reset" class="btn btn-danger">Limpiar</button></div>
+                        </div>
+                    </form>
+                </div>
         </div>
     </div>
 </div>

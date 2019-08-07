@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Credito;
 use App\Cliente;
@@ -38,26 +39,30 @@ class CreditoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $credito = new Credito;
 
-       
-        $credito->valor_credito=$request->txtCredito;
-        $valorCredito=$credito->valor_credito=$request->txtCredito;
-
-        $credito->valor_saldo=$valorCredito;
-        
+        $credito->valor_credito = $request->txtCredito;
+        $valorCredito= $credito->valor_credito = $request->txtCredito;
+        $valorSaldo=$credito->valor_credito = $request->txtCredito; 
+        $credito->valor_saldo=$valorSaldo;
         $credito->numero_cuotas=$request->txtNumCuotas;
-
-        
+        $cuotasFaltantes=$credito->numero_cuotas=$request->txtNumCuotas;
+        $credito->numero_cuotas_faltantes=$request->txtNumCuotas;
+        $cuotas=$credito->numero_cuotas=$cuotasFaltantes;
         $credito->user_id=$request->txtCliente;
         $credito->tipocredito_id=$request->txtTipoCredito;
-
+        $tipoCredito=$credito->tipocredito_id=$request->txtTipoCredito;
+        $idCredito = TipoCredito::findOrFail($tipoCredito);
+        $valorInteres= $idCredito->interes_fijo;
+        $valorCuota=($valorCredito*(pow(1+$valorInteres,$cuotas)*$valorInteres))/(pow(1+$valorInteres,$cuotas)-1);
+        $credito->valor_cuotas= $valorCuota;
         $credito->save();
-
-        return redirect('/Credito');
+        return redirect('/Cliente');
     }
+
 
     /**
      * Display the specified resource.
@@ -69,8 +74,10 @@ class CreditoController extends Controller
     {
         $credito =  Credito::findOrFail($id);
         $cliente = $credito->usuario;
+        $movimiento = $credito->movimientos;
         $tipoCredito = $credito->tipoCredito;
-        return view('credito.show', compact('credito','tipoCredito','cliente'));
+
+        return view('credito.show', compact('credito','movimiento','cliente','tipoCredito'));
     }
 
     /**
@@ -102,5 +109,7 @@ class CreditoController extends Controller
     {
         $credito = Credito::findOrFail($id);
         $credito->delete();
+
+        return redirect('/Cliente');
     }
 }

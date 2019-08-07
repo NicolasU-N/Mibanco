@@ -56,7 +56,7 @@
                         </div>
                               <hr />
                               <div class="row">
-                                    <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar este Cliente?');" class="btn btn-primary">Registrar</button></div>
+                                    <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar este cliente?');" class="btn btn-primary">Registrar</button></div>
                                     <div class="col-6"><button type="reset" class="btn btn-danger">Limpiar</button></div>
                                 </div>
                         </form>

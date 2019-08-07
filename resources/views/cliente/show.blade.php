@@ -9,11 +9,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 m-auto">
+        <div class="col-md-12 m-auto">
             <table class="table table-striped table-dark table-hover table-responsive text-center">
                 <thead>
                     <tr>
-                        <th scope="col">N° Documento</th>
+                        <th scope="col">Identificación</th>
                         <th scope="col">Tipo de documento</th>
                         <th scope="col">Nombre(s)</th>
                         <th scope="col">Apellido(s)</th>
@@ -27,7 +27,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row"><span class="badge badge-info">{{$cliente->user_id}}</span></th>
+                        <th scope="row"><span class="badge badge-primary">{{$cliente->user_id}}</span></th>
                         <td>{{$tipoDocumento->nombre}}</td>
                         <td>{{$cliente->nombres}}</td>
                         <td>{{$cliente->apellidos}}</td>
@@ -37,64 +37,68 @@
                         @if (count($credito))
                         <td>
                             <ul>
-                                    @foreach ($credito as $creditos)
-                                <li> {{$creditos->id}}</li>
+                                @foreach ($credito as $creditos)
+                            <li> Crédito ID: {{$creditos->id}} </li>
                                 @endforeach
                             </ul>
                         </td>
                         @else
-                            Aún sin créditos
+                            <td>AÚN SIN CRÉDITOS ASOCIADOS</td>
                         @endif
                         <td>
                             <form action="/Cliente/{{$cliente->id}}/edit" method="GET">
-                                <button type="submit" class="btn btn-info">Editar</button>
+                                <button type="submit" class="btn btn-primary">Editar</button>
                             </form>
                         </td>
                         <td>
                             <form action="/Cliente/{{$cliente->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Desea eliminar el cliente?');" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" onclick="return confirm('¿Desea eliminar a éste cliente?');" class="btn btn-danger">Eliminar</button>
                             </form>                        
                         </td>
                     </tr>
                 </tbody>
-        </table> 
+            </table> 
         </div>
-    </div>
-
-    
-
-
-    
+    </div>  
 </div>  
 
 <div class="container-fluid p-5 bg-danger text-white my-5 text-center">
         <h2>Créditos</h2>
     </div>
+    @if (count($credito))
     <div class="container-fluid">
-            <div class="row">
-                    @foreach ($credito as $creditos)
-                    <div class="col-md-4 m-auto">
-                        <div class="card my-5  text-center" style="box-shadow:  8px 8px 15px rgba(0,0,0,0.2)">
-                        <h3 class="bg-danger p-5 text-white">ID CRÉDITO:  {{$creditos->id}}</h3>
-                        <h3 class="p-3">VALOR CRÉDITO: {{$creditos->valor_credito}}</h3>
-                        <hr />
-                        <h3 class="p-3">CUOTAS:  {{$creditos->numero_cuotas}}</h3>
-                        <hr />
-                        <div class="row py-3">
-                            <div class="col-md-4 m-auto">
-                            <form action="/Credito/{{$creditos->id}}" method="GET">
-                                <button class="btn btn-primary" type="submit">Más información</button>
-                            </form>
-                            </div>
-                        </div>
+        <div class="row">
+            @foreach ($credito as $creditos)
+            <div class="col-md-4 m-auto">
+                <div class="card text-center">
+                    <h3 class="p-5 bg-primary text-white">ID del crédito: {{$creditos->id}} </h3>
+                    <div class="row p-5">
+                        <div class="col-6 m-auto my-5">
+                        <a class="btn btn-primary" href="/Credito/{{$creditos->id}}">Más información</a>
                         </div>
                     </div>
-                        
-                    @endforeach
                 </div>
+            </div>      
+            @endforeach
+        </div>
+    @else
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-8 m-auto">
+                <div class="alert alert-danger alert-dismissible fade show p-5" role="alert">
+                    NO HAY CRÉDITOS ASOCIADOS A ÉSTE CLIENTE
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>       
+        </div>
     </div>
+            
+    @endif
+</div>
 
 
 

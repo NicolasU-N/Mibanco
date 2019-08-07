@@ -9,7 +9,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-5 m-auto">
+        <div class="col-md-7 m-auto">
             <table class="table table-striped table-dark table-hover table-responsive text-center">
                 <thead>
                     <tr>
@@ -23,20 +23,20 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row"><span class="badge badge-info">{{$tipoCredito->id}}</span></th>
+                        <th scope="row"><span class="badge badge-primary">{{$tipoCredito->id}}</span></th>
                         <td>{{$tipoCredito->nombre}}</td>
                         <td>{{$tipoCredito->interes_fijo*100}} %</td>
                         <td>{{$tipoCredito->descripcion}}</td>
                         <td>
                             <form action="/TipoCredito/{{$tipoCredito->id}}/edit" method="GET">
-                                <button type="submit" class="btn btn-info">Editar</button>
+                                <button type="submit" class="btn btn-primary">Editar</button>
                             </form>
                         </td>
                         <td>
                             <form action="/TipoCredito/{{$tipoCredito->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Desea eliminar el tipo de crédito?');" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" onclick="return confirm('¿Desea eliminar a éste tipo de crédito?');" class="btn btn-danger">Eliminar</button>
                             </form>                        
                         </td>
                     </tr>

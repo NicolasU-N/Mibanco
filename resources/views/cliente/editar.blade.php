@@ -58,14 +58,14 @@
                         <hr />
                         <div class="row pb-5 text-center">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <button type="submit" onclick="return confirm('¿Desea actualizar a éste cliente?');" class="btn btn-success">Actualizar</button>
                             </div>
                             </form>
                             <div class="col-6">
                                 <form action="/Cliente/{{$cliente->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('¿Desea eliminar el cliente?');" class="btn btn-danger">Eliminar</button>
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar a éste cliente?');" class="btn btn-danger">Eliminar</button>
                                 </form>                        
                             </div>
             </div>  

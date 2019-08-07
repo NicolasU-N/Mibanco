@@ -21,6 +21,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+    .disabled-pointer{
+        cursor: no-drop;
+    }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -57,7 +63,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        <span class="badge badge-primary"> Bienvenido: </span> {{ Auth::user()->name }} <span class="caret"></span>
+                                        <span class="badge badge-primary" style="font-size: 1.1em;">Bienvenido: </span> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
