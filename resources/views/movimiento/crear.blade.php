@@ -39,8 +39,7 @@
                     </div>
                     <hr />
                     <div class="row mb-5 text-center">
-                            <div class="col-6"><button type="submit" onclick="return confirm('¿Desea registrar el movimiento bancario?');" class="btn btn-primary">Registrar</button></div>
-                            <div class="col-6"><button type="reset" class="btn btn-danger">Limpiar</button></div>
+                            <div class="col-6 m-auto"><button type="submit" onclick="return confirm('¿Desea registrar el movimiento bancario?');" class="btn btn-primary">Registrar</button></div>
                         </div>
                     </form>
                 </div>
