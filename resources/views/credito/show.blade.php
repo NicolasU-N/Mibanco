@@ -20,8 +20,8 @@
                         <th scope="col">Valor cuotas</th>
                         <th scope="col">Cliente asociado al crédito</th>
                         <th scope="col">Estado del crédito</th>
-                        <th scope="col">Eliminar</th>
                         <th scope="col">Generar movimiento</th>
+                        <th scope="col">Eliminar</th>
 
                     </tr>
                 </thead>
@@ -36,10 +36,21 @@
                         <td>{{$credito->numero_cuotas_faltantes}}</td>
                         <td>$ {{round($credito->valor_cuotas,0) }} COP</td>
                         <td>{{$cliente->user_id}}</td>
-                        @if ($credito->estado_credito=='Sin pagar')
+                        @if ($credito->estado_credito=='SIN PAGAR')
                             <td> <span class="badge badge-danger" style="font-size: 1.1em">{{$credito->estado_credito}}</span></td>
                         @else
                         <td> <span class="badge badge-success" style="font-size: 1.1em">{{$credito->estado_credito}}</span></td>
+                        @endif
+                        @if ($credito->numero_cuotas_faltantes==0)
+                        <td>
+                            <span class="badge badge-primary" style="font-size: 1.1em">Movimientos completados</span>
+                        </td>
+                        @else
+                        <td>
+                            <form action="/GenerarMovimiento/{{$credito->id}}" method="GET">
+                            <button type="submit" class="btn btn-success">Generar</button>
+                            </form>
+                        </td>
                         @endif
                         <td>
                             <form action="/Credito/{{$credito->id}}" method="POST">
@@ -47,11 +58,6 @@
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('¿Desea eliminar el crédito?');" class="btn btn-danger">Eliminar</button>
                             </form>                        
-                        </td>
-                        <td>
-                            <form action="/GenerarMovimiento/{{$credito->id}}" method="GET">
-                            <button type="submit" class="btn btn-success">Generar</button>
-                            </form>
                         </td>
 
                     </tr>
